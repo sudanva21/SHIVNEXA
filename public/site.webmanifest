@@ -1,0 +1,23 @@
+{
+  "name": "Shivnexa Industries Pvt Ltd",
+  "short_name": "Shivnexa",
+  "description": "Reliable Industrial Safety Equipment & Protective Gear",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0c432f",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
