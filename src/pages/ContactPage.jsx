@@ -103,6 +103,7 @@ export default function ContactPage({ navigateTo }) {
                   alt="Shivnexa Certified Protective Gear"
                   className="w-full h-auto object-contain select-none"
                   loading="eager"
+                  decoding="async"
                 />
               </div>
             </div>

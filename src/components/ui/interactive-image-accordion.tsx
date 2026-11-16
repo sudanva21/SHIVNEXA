@@ -73,6 +73,8 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onActivat
       <img
         src={item.imageUrl}
         alt={item.title}
+        loading="eager"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out"
         style={{
           transform: isActive ? "scale(1.03)" : "scale(1)",

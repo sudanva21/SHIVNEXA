@@ -73,6 +73,8 @@ export default function Navbar({ currentPage, navigateTo }) {
               src="/shivnexa-icon.png"
               alt="Shivnexa Logo"
               className="w-8 h-8 sm:w-9 sm:h-9 object-contain shrink-0 transition-transform group-hover:scale-105"
+              loading="eager"
+              decoding="async"
             />
             <div className="flex flex-col leading-tight">
               <span className="text-lg sm:text-xl font-extrabold tracking-wider text-primary">

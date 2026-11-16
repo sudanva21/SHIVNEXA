@@ -67,6 +67,12 @@ export default function ProductDetailPage({ productId = 'sn-gl-001', navigateTo 
                   className="w-full h-full object-contain"
                   alt={product.name}
                   src={currentMainImage}
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/shivnexa-icon.png';
+                  }}
                 />
               </div>
 
@@ -91,6 +97,12 @@ export default function ProductDetailPage({ productId = 'sn-gl-001', navigateTo 
                             className="w-full h-full object-contain"
                             alt={img.label}
                             src={img.url}
+                            loading="eager"
+                            decoding="async"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = '/shivnexa-icon.png';
+                            }}
                           />
                         </div>
                       </button>
@@ -230,6 +242,12 @@ export default function ProductDetailPage({ productId = 'sn-gl-001', navigateTo 
                       className="w-full h-full object-contain"
                       alt={rel.name}
                       src={rel.image}
+                      loading="eager"
+                      decoding="async"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = '/shivnexa-icon.png';
+                      }}
                     />
                   </div>
                   <p className="text-[10px] sm:text-xs uppercase font-medium text-outline mb-0.5 truncate">

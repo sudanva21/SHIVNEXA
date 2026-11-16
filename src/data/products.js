@@ -6115,7 +6115,7 @@ export const CATEGORIES = [
     "badge": "6 PRODUCTS",
     "icon": "visibility",
     "description": "Anti-scratch safety goggles, full face shields, hard-coated eyewear, and auto-darkening welding goggles.",
-    "image": "/products/019-3m-1709in-safety-goggles-anti-scratch.webp",
+    "image": "/products/015-3m-1709in-safety-goggles-anti-scratch.webp",
     "filterTag": "Eye & Face Protection"
   },
   {
@@ -6142,7 +6142,7 @@ export const CATEGORIES = [
     "badge": "17 PRODUCTS",
     "icon": "apparel",
     "description": "High-visibility reflective jackets, disposable lab coats, chemical resistant aprons, and doctor coats.",
-    "image": "/products/023-90-gsm-reflective-jacket-with-pocket-and-zip-green-orange.webp",
+    "image": "/products/036-90-gsm-reflective-jacket-with-pocket-and-zip-green-orange.webp",
     "filterTag": "Workwear & Reflective Apparel"
   },
   {
@@ -6160,7 +6160,7 @@ export const CATEGORIES = [
     "badge": "4 PRODUCTS",
     "icon": "cleaning_services",
     "description": "Diversey Crew stainless steel polish, disinfectant floor cleaners, and biodegradable garbage bags.",
-    "image": "/products/028-crew-stainless-steel-cleaner-and-polish-5l.webp",
+    "image": "/products/021-crew-stainless-steel-cleaner-and-polish-5l.webp",
     "filterTag": "Cleaning & Janitorial"
   },
   {
@@ -6169,7 +6169,7 @@ export const CATEGORIES = [
     "badge": "1 PRODUCTS",
     "icon": "fire_extinguisher",
     "description": "Commercial and industrial fire extinguishers, alarm panels, alarm boxes, and smoke detectors.",
-    "image": "/products/032-fire-extinguisher.webp",
+    "image": "/products/016-fire-extinguisher.webp",
     "filterTag": "Fire Safety"
   },
   {
@@ -6187,7 +6187,7 @@ export const CATEGORIES = [
     "badge": "2 PRODUCTS",
     "icon": "medical_services",
     "description": "Emergency eyewash bottles and Udyogi combination eye and shower wash units.",
-    "image": "/products/035-udyogi-4710-gi-eye-shower-wash.webp",
+    "image": "/products/093-udyogi-4710-gi-eye-shower-wash.webp",
     "filterTag": "First Aid & Eyewash"
   },
   {

@@ -55,6 +55,8 @@ export default function HomePage({ navigateTo }) {
               src="/mobile-hero-clean-visual.png"
               alt="Shivnexa Industrial Safety Gear"
               className="w-full h-full object-contain object-right-top"
+              loading="eager"
+              decoding="async"
             />
           </div>
 
@@ -153,6 +155,8 @@ export default function HomePage({ navigateTo }) {
                     src="/spotlight-helmet-clean.png"
                     alt="Udyogi Ultra 6000 Helmets"
                     className="w-full h-full object-contain"
+                    loading="eager"
+                    decoding="async"
                   />
                 </div>
                 <div className="min-w-0 flex flex-col justify-center">
@@ -288,6 +292,12 @@ export default function HomePage({ navigateTo }) {
                     className="w-full h-full object-contain"
                     alt="Udyogi Ultra 5000 Helmets"
                     src="/products/017-udyogi-ultra-5000-helmets.webp"
+                    loading="eager"
+                    decoding="async"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = '/shivnexa-icon.png';
+                    }}
                   />
                 </div>
                 <div className="mt-4 px-2 pb-1">
@@ -356,6 +366,12 @@ export default function HomePage({ navigateTo }) {
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
                   alt="Head & Face Protection"
                   src="/products/017-udyogi-ultra-5000-helmets.webp"
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/shivnexa-icon.png';
+                  }}
                 />
               </div>
               <button
@@ -389,6 +405,12 @@ export default function HomePage({ navigateTo }) {
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
                   alt="Hand & Arm Protection"
                   src="/products/001-utex-xpert-chem-601-triple-dipped-gloves.webp"
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/shivnexa-icon.png';
+                  }}
                 />
               </div>
               <button
@@ -422,6 +444,12 @@ export default function HomePage({ navigateTo }) {
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
                   alt="Safety Footwear"
                   src="/products/006-utex-pu-sole-safety-shoes-isi-marked-black.webp"
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/shivnexa-icon.png';
+                  }}
                 />
               </div>
               <button
@@ -454,6 +482,12 @@ export default function HomePage({ navigateTo }) {
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
                   alt="Fall Protection"
                   src="/products/033-safety-harness.webp"
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/shivnexa-icon.png';
+                  }}
                 />
               </div>
               <button
@@ -486,6 +520,12 @@ export default function HomePage({ navigateTo }) {
                   className="w-full h-full object-cover hover:scale-102 transition-transform duration-300"
                   alt="Respiratory Safety"
                   src="/products/011-dweej-n95-mask.webp"
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/shivnexa-icon.png';
+                  }}
                 />
               </div>
               <button

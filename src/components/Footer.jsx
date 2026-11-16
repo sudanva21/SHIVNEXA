@@ -8,6 +8,8 @@ export default function Footer({ navigateTo }) {
       src="/shivnexa-icon.png"
       alt="Shivnexa Industries Logo"
       className="w-8 h-8 object-contain"
+      loading="eager"
+      decoding="async"
     />
   );
 

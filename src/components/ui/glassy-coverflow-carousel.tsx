@@ -224,7 +224,7 @@ export default function GlassyCarousel({ items, initialIndex = 0, layout = "webs
             "--gc-shade": Math.min(abs, 2) * .19,
           } as CSSProperties}>
           {layout === "website" && <span className="gc-browser-bar" aria-hidden="true"><span className="gc-browser-dots"><i /><i /><i /></span><span>{item.category || projectDomain(item.href)}</span><Maximize2 size={10} /></span>}
-          <span className="gc-poster"><img src={item.image} alt={`${item.title} ${layout === "poster" ? "poster" : "website preview"}`} draggable={false} loading={Math.abs(d) < 2 ? "eager" : "lazy"} />
+          <span className="gc-poster"><img src={item.image} alt={`${item.title} ${layout === "poster" ? "poster" : "website preview"}`} draggable={false} loading="eager" decoding="async" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/shivnexa-icon.png"; }} />
             <span className="gc-poster-shade" aria-hidden="true" />
             {item.trailerUrl && <span className="gc-watch" aria-hidden="true"><Play size={13} fill="currentColor" strokeWidth={0} /> Watch trailer</span>}
           </span>
@@ -256,7 +256,7 @@ export default function GlassyCarousel({ items, initialIndex = 0, layout = "webs
         <div className="gc-dialog-bar"><span><i /> {preview.category || (video ? "Official trailer" : projectDomain(preview.href))}</span><button type="button" onClick={() => setPreview(null)}><X size={15} /> Close</button></div>
         <div className="gc-project-preview">{video
           ? <iframe src={video} title={`${preview.title} official trailer`} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
-          : <img src={preview.image} alt={`${preview.title} preview`} />}</div>
+          : <img src={preview.image} alt={`${preview.title} preview`} loading="eager" decoding="async" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/shivnexa-icon.png"; }} />}</div>
         <div className="gc-dialog-caption"><div><h2 id={`${id}-preview-title`}>{preview.title}</h2><p>{preview.description || preview.subtitle}</p></div><span>{preview.subtitle}</span></div>
         <div className="flex flex-wrap items-center gap-3 mt-4">
           {onCardAction && (
