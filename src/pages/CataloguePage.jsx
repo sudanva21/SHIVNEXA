@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
+import SafeImage from '@/components/ui/SafeImage';
 
 const ITEMS_PER_PAGE = 24;
 
@@ -190,16 +191,10 @@ export default function CataloguePage({ initialCategory = 'all', navigateTo }) {
                     className="w-full aspect-square bg-surface-container-low/40 rounded-lg overflow-hidden flex items-center justify-center p-2.5 sm:p-4 mb-2 sm:mb-3 cursor-pointer"
                     onClick={() => navigateTo('product-detail', product.id)}
                   >
-                    <img
+                    <SafeImage
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                       alt={product.name}
                       src={product.image}
-                      loading="eager"
-                      decoding="async"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = '/shivnexa-icon.png';
-                      }}
                     />
                   </div>
                   <div className="flex items-center justify-between mb-1 gap-1">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PRODUCTS } from '../data/products';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
+import SafeImage from '@/components/ui/SafeImage';
 
 export default function ProductDetailPage({ productId = 'sn-gl-001', navigateTo }) {
   const product = PRODUCTS.find((p) => p.id === productId) || PRODUCTS[0];
@@ -66,17 +67,11 @@ export default function ProductDetailPage({ productId = 'sn-gl-001', navigateTo 
             {/* Left Column: Product Gallery */}
             <div className="lg:col-span-6 flex flex-col gap-4">
               <div className="w-full aspect-[4/3] bg-surface-container-low/40 rounded-xl border border-surface-container flex items-center justify-center p-6">
-                <img
+                <SafeImage
                   id="main-product-stage"
                   className="w-full h-full object-contain"
                   alt={product.name}
                   src={currentMainImage}
-                  loading="eager"
-                  decoding="async"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = '/shivnexa-icon.png';
-                  }}
                 />
               </div>
 
@@ -97,16 +92,10 @@ export default function ProductDetailPage({ productId = 'sn-gl-001', navigateTo 
                         onClick={() => setActiveAngleIndex(idx)}
                       >
                         <div className="aspect-[4/3] flex items-center justify-center overflow-hidden">
-                          <img
+                          <SafeImage
                             className="w-full h-full object-contain"
                             alt={img.label}
                             src={img.url}
-                            loading="eager"
-                            decoding="async"
-                            onError={(e) => {
-                              e.currentTarget.onerror = null;
-                              e.currentTarget.src = '/shivnexa-icon.png';
-                            }}
                           />
                         </div>
                       </button>
@@ -242,16 +231,10 @@ export default function ProductDetailPage({ productId = 'sn-gl-001', navigateTo 
                     className="w-full aspect-[4/3] bg-surface-container-low/40 rounded-lg overflow-hidden flex items-center justify-center p-2 sm:p-4 mb-2 sm:mb-3 cursor-pointer"
                     onClick={() => navigateTo('product-detail', rel.id)}
                   >
-                    <img
+                    <SafeImage
                       className="w-full h-full object-contain"
                       alt={rel.name}
                       src={rel.image}
-                      loading="eager"
-                      decoding="async"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = '/shivnexa-icon.png';
-                      }}
                     />
                   </div>
                   <p className="text-[10px] sm:text-xs uppercase font-medium text-outline mb-0.5 truncate">

@@ -56,7 +56,7 @@ export default function HomePage({ navigateTo }) {
               alt="Shivnexa Industrial Safety Gear"
               className="w-full h-full object-contain object-right-top"
               loading="eager"
-              decoding="async"
+              decoding="sync"
             />
           </div>
 
@@ -156,7 +156,7 @@ export default function HomePage({ navigateTo }) {
                     alt="Udyogi Ultra 6000 Helmets"
                     className="w-full h-full object-contain"
                     loading="eager"
-                    decoding="async"
+                    decoding="sync"
                   />
                 </div>
                 <div className="min-w-0 flex flex-col justify-center">
@@ -293,7 +293,7 @@ export default function HomePage({ navigateTo }) {
                     alt="Udyogi Ultra 5000 Helmets"
                     src="/products/017-udyogi-ultra-5000-helmets.webp"
                     loading="eager"
-                    decoding="async"
+                    decoding="sync"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
                       e.currentTarget.src = '/shivnexa-icon.png';
@@ -367,7 +367,7 @@ export default function HomePage({ navigateTo }) {
                   alt="Head & Face Protection"
                   src="/products/017-udyogi-ultra-5000-helmets.webp"
                   loading="eager"
-                  decoding="async"
+                  decoding="sync"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = '/shivnexa-icon.png';
@@ -406,7 +406,7 @@ export default function HomePage({ navigateTo }) {
                   alt="Hand & Arm Protection"
                   src="/products/001-utex-xpert-chem-601-triple-dipped-gloves.webp"
                   loading="eager"
-                  decoding="async"
+                  decoding="sync"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = '/shivnexa-icon.png';
@@ -445,7 +445,7 @@ export default function HomePage({ navigateTo }) {
                   alt="Safety Footwear"
                   src="/products/006-utex-pu-sole-safety-shoes-isi-marked-black.webp"
                   loading="eager"
-                  decoding="async"
+                  decoding="sync"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = '/shivnexa-icon.png';
@@ -483,7 +483,7 @@ export default function HomePage({ navigateTo }) {
                   alt="Fall Protection"
                   src="/products/033-safety-harness.webp"
                   loading="eager"
-                  decoding="async"
+                  decoding="sync"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = '/shivnexa-icon.png';
@@ -521,7 +521,7 @@ export default function HomePage({ navigateTo }) {
                   alt="Respiratory Safety"
                   src="/products/011-dweej-n95-mask.webp"
                   loading="eager"
-                  decoding="async"
+                  decoding="sync"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = '/shivnexa-icon.png';
@@ -622,6 +622,12 @@ export default function HomePage({ navigateTo }) {
                   className="w-full h-full object-cover"
                   alt="Industrial quality control inspection at Shivnexa facility"
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80"
+                  loading="eager"
+                  decoding="sync"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/about-sourcing-factory.jpg';
+                  }}
                 />
               </div>
             </div>

@@ -9,7 +9,7 @@ export default function Footer({ navigateTo }) {
       alt="Shivnexa Industries Logo"
       className="w-8 h-8 object-contain"
       loading="eager"
-      decoding="async"
+      decoding="sync"
     />
   );
 

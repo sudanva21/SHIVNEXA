@@ -71,7 +71,7 @@ export default function AboutPage({ navigateTo }) {
                       className="absolute -inset-x-8 -inset-y-4 w-[calc(100%+4rem)] h-[calc(100%+2rem)] object-cover object-top pointer-events-none"
                       style={{ transform: 'skewX(14deg) scale(1.15)' }}
                       loading="eager"
-                      decoding="async"
+                      decoding="sync"
                     />
                   </picture>
                 </div>
@@ -289,7 +289,7 @@ export default function AboutPage({ navigateTo }) {
                       alt="Modern automated manufacturing plant with yellow 40-tonne overhead gantry crane"
                       className="w-full h-full object-cover select-none pointer-events-none"
                       loading="eager"
-                      decoding="async"
+                      decoding="sync"
                     />
                   </picture>
                 </div>
