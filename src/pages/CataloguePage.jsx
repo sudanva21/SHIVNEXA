@@ -1,10 +1,18 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
+
+const ITEMS_PER_PAGE = 24;
 
 export default function CataloguePage({ initialCategory = 'all', navigateTo }) {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setSelectedCategory(initialCategory);
+    setCurrentPage(1);
+  }, [initialCategory]);
 
   const categories = useMemo(() => [
     { id: 'all', label: `All Products (${PRODUCTS.length})` },
@@ -41,9 +49,38 @@ export default function CataloguePage({ initialCategory = 'all', navigateTo }) {
     });
   }, [searchQuery, selectedCategory]);
 
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / ITEMS_PER_PAGE));
+  const safePage = Math.min(currentPage, totalPages);
+
+  const paginatedProducts = useMemo(() => {
+    const start = (safePage - 1) * ITEMS_PER_PAGE;
+    return filteredProducts.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredProducts, safePage]);
+
+  const pageNumbers = useMemo(() => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    const pages = [1];
+    if (safePage > 3) pages.push('...');
+    for (let i = Math.max(2, safePage - 1); i <= Math.min(totalPages - 1, safePage + 1); i++) {
+      pages.push(i);
+    }
+    if (safePage < totalPages - 2) pages.push('...');
+    pages.push(totalPages);
+    return pages;
+  }, [totalPages, safePage]);
+
+  const handlePageChange = (page) => {
+    if (page < 1 || page > totalPages || page === safePage) return;
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleReset = () => {
     setSearchQuery('');
     setSelectedCategory('all');
+    setCurrentPage(1);
   };
 
   return (
@@ -86,10 +123,13 @@ export default function CataloguePage({ initialCategory = 'all', navigateTo }) {
               <input
                 className="w-full h-10 pl-10 pr-4 bg-surface-container-low/50 text-on-surface placeholder-outline text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                 id="catalogue-search"
-                placeholder="Search 124 products by name or code (e.g., Utex, 3M, Karam, SN-GL-001)..."
+                placeholder={`Search ${PRODUCTS.length} products by name or code (e.g., Utex, 3M, Karam, SN-GL-001)...`}
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setCurrentPage(1);
+                }}
               />
             </div>
             {/* Results count & reset */}
@@ -123,7 +163,10 @@ export default function CataloguePage({ initialCategory = 'all', navigateTo }) {
                       ? 'bg-primary text-white shadow-sm'
                       : 'bg-white text-on-surface-variant hover:text-primary hover:bg-surface-container-low border border-surface-container'
                   }`}
-                  onClick={() => setSelectedCategory(cat.id)}
+                  onClick={() => {
+                    setSelectedCategory(cat.id);
+                    setCurrentPage(1);
+                  }}
                 >
                   {cat.label}
                 </button>
@@ -138,7 +181,7 @@ export default function CataloguePage({ initialCategory = 'all', navigateTo }) {
         <div className="max-w-[1280px] mx-auto px-margin-mobile lg:px-margin">
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-              {filteredProducts.map((product) => (
+              {paginatedProducts.map((product) => (
                 <article
                   key={product.id}
                   className="product-card group flex flex-col bg-white rounded-xl border border-surface-container p-2.5 sm:p-4 hover:shadow-md transition-shadow"
@@ -222,6 +265,66 @@ export default function CataloguePage({ initialCategory = 'all', navigateTo }) {
               >
                 <span>Reset Filters</span>
               </button>
+            </div>
+          )}
+
+          {/* Pagination Controls */}
+          {filteredProducts.length > ITEMS_PER_PAGE && (
+            <div className="mt-10 pt-6 border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-xs sm:text-sm text-outline font-medium">
+                Showing{' '}
+                <span className="text-primary font-semibold">
+                  {(safePage - 1) * ITEMS_PER_PAGE + 1}
+                </span>
+                –
+                <span className="text-primary font-semibold">
+                  {Math.min(safePage * ITEMS_PER_PAGE, filteredProducts.length)}
+                </span>{' '}
+                of{' '}
+                <span className="text-primary font-semibold">
+                  {filteredProducts.length}
+                </span>{' '}
+                products
+              </p>
+
+              <div className="flex items-center gap-1.5 flex-wrap justify-center">
+                <button
+                  type="button"
+                  disabled={safePage === 1}
+                  onClick={() => handlePageChange(safePage - 1)}
+                  className="h-9 px-3 rounded-lg border border-surface-container bg-white text-xs sm:text-sm font-semibold text-primary hover:bg-surface-container-low disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer"
+                >
+                  Prev
+                </button>
+                {pageNumbers.map((page, idx) =>
+                  page === '...' ? (
+                    <span key={`ellipsis-${idx}`} className="px-2 text-xs text-outline select-none">
+                      ...
+                    </span>
+                  ) : (
+                    <button
+                      key={page}
+                      type="button"
+                      onClick={() => handlePageChange(page)}
+                      className={`h-9 min-w-[36px] px-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
+                        page === safePage
+                          ? 'bg-primary text-white shadow-sm'
+                          : 'bg-white border border-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-low'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
+                <button
+                  type="button"
+                  disabled={safePage === totalPages}
+                  onClick={() => handlePageChange(safePage + 1)}
+                  className="h-9 px-3 rounded-lg border border-surface-container bg-white text-xs sm:text-sm font-semibold text-primary hover:bg-surface-container-low disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer"
+                >
+                  Next
+                </button>
+              </div>
             </div>
           )}
         </div>
