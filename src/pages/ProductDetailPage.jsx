@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PRODUCTS } from '../data/products';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 
 export default function ProductDetailPage({ productId = 'sn-gl-001', navigateTo }) {
   const product = PRODUCTS.find((p) => p.id === productId) || PRODUCTS[0];
   const [activeAngleIndex, setActiveAngleIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveAngleIndex(0);
+  }, [productId]);
 
   // Deduplicate gallery images by URL to never show redundant image holders
   const rawImages = (product.detailImages && product.detailImages.length > 0)
